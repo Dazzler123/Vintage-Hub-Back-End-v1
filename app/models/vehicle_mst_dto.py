@@ -1,16 +1,16 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, constr
 
 
-class VehicleDTO(BaseModel):
-    title: str
+class VehicleMstDTO(BaseModel):
+    registrationNumber: str
+    model: str
     make: str
-    partNumber: str
-    manufacturer: str
-    oem: bool | None = False
-    aftermarket: bool | None = False
-    condition: str
-    description: str | None = None
-    compatibility: str | None = None
-    additionalInfo: str | None = None
-    price: float | None = None
-    negotiable: bool | None = False
+    yom: int
+    mileageKmpl: float
+    fuelType: constr(min_length=1, max_length=1)
+    engineCapacityCc: float
+    transmission: str | None = None
+    drivetrain: str | None = None
+    horsepower: str | None = None
+    color: str | None = None
+    bodyType: str | None = None
