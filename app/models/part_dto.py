@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class Part(BaseModel):
+class PartDTO(BaseModel):
     title: str
     make: str
     partNumber: str

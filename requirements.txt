@@ -40,4 +40,5 @@ anyio~=4.2.0
 httptools~=0.6.1
 watchfiles~=0.21.0
 packaging~=23.2
-mysql
+mysql~=0.0.3
+SQLAlchemy~=2.0.25
