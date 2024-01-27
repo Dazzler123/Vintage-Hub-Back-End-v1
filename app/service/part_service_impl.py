@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from app.entity.part import Part, Base
+from app.entity.part_mst import PartMst, Base
 from app.models.part_dto import PartDTO
 
 
@@ -15,9 +15,9 @@ class PartsService:
         Session = sessionmaker(bind=engine)
         session = Session()
 
-        part = Part(self.title, self.make, self.partNumber, self.manufacturer, self.oem,
-                    self.aftermarket, self.condition, self.description, self.compatibility,
-                    self.additionalInfo, self.price, self.negotiable)
+        part = PartMst(self.title, self.make, self.partNumber, self.manufacturer, self.oem,
+                       self.aftermarket, self.condition, self.description, self.compatibility,
+                       self.additionalInfo, self.price, self.negotiable)
 
         session.add(part)
 

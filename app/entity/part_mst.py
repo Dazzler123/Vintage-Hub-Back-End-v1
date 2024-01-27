@@ -4,8 +4,8 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
 
-class Part(Base):
-    __tablename__ = "part"
+class PartMst(Base):
+    __tablename__ = "part_mst"
 
     id = Column("id", Integer, primary_key=True, autoincrement=True)
     title = Column("title", String(length=50))
