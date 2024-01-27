@@ -2,13 +2,13 @@ import pickle
 import pandas as pd
 import numpy as np
 
-from app.models.part_dto import PartDTO
+from app.models.part_mst_dto import PartMstDTO
 
 
 class VehicleService:
 
     # This function is used to suggest user a price using given vehicle specifications.
-    def predict_price(self: PartDTO):
+    def predict_price(self: PartMstDTO):
         model = pickle.load(open('LinearRegressionModel.pkl', 'rb'))
         car = pd.read_csv('resources/datasets/Cleaned_Car_data.csv')
 

@@ -2,13 +2,13 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from app.entity.part_mst import PartMst, Base
-from app.models.part_dto import PartDTO
+from app.models.part_mst_dto import PartMstDTO
 
 
 class PartsService:
 
     # ===== This function is used to create new part =====
-    def create_part(self: PartDTO):
+    def create_part(self: PartMstDTO):
         engine = create_engine("mysql+mysqlconnector://root:1234@localhost:3306/vintage_hub_db", echo=True)
         Base.metadata.create_all(bind=engine)
 
