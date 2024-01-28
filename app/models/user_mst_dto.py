@@ -1,13 +1,13 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, constr
 
 
 class UserMstDTO(BaseModel):
-    userFullName: str
-    userAddress: str
-    userNic: str
-    userEmailAddress: str
-    userContactNo: str
-    userDLNo: str
-    userGender: str
-    userNewUserName: str
-    userNewPassword: str
+    name: str
+    address: str
+    nic: str
+    email: str
+    contactNo: str
+    drivingLicenseNo: str
+    gender: constr(min_length=1, max_length=1)
+    username: str
+    password: str

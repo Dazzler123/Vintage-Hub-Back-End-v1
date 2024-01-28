@@ -2,18 +2,15 @@
 from cryptography.fernet import Fernet
 
 
-def encrypt_password():
+def encrypt_password(password):
     # Generate a Fernet key
     key = Fernet.generate_key()
 
     # Create a Fernet object with that key
     f = Fernet(key)
 
-    # Input string to be encrypted
-    input_string = "Hello World!"
-
     # Encrypt the string
-    encrypted_string = f.encrypt(input_string.encode())
+    encrypted_string = f.encrypt(password.encode())
 
     return encrypted_string
 

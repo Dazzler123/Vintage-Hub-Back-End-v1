@@ -15,7 +15,7 @@ class UserMst(Base):
     contactNo = Column("contact", String(length=50))
     drivingLicenseNo = Column("driving_license_no", String(length=50))
     gender = Column("gender", CHAR)
-    username = Column("enc_username", String(length=255))
+    username = Column("username", String(length=255))
     password = Column("enc_password", String(length=255))
 
     def __init__(self, name, address, nic, email, contactNo, drivingLicenseNo, gender,
