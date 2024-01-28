@@ -7,7 +7,7 @@ from app.models.other_accessory_mst_dto import OtherAccessoryMstDTO
 
 class OtherAccessoryService:
 
-    # ===== This function is used to create new part =====
+    # ===== This function is used to create new accessory item =====
     def create_other_accessory(self: OtherAccessoryMstDTO):
         engine = create_engine("mysql+mysqlconnector://root:1234@localhost:3306/vintage_hub_db", echo=True)
         Base.metadata.create_all(bind=engine)

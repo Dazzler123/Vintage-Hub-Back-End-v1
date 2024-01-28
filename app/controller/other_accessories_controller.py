@@ -1,9 +1,11 @@
 from fastapi import APIRouter
 
+from app.models.other_accessory_mst_dto import OtherAccessoryMstDTO
+from app.service.other_accessory_service_impl import OtherAccessoryService
+
 router = APIRouter()
 
-@router.get('/api/other/v1-create-other')
-async def createOtherAccessory():
-    # Your logic to get users
-    other = [{'id': 1, 'name': 'John'}, {'id': 2, 'name': 'Jane'}]
-    return other
+
+@router.post('/api/other/v1-create-other')
+async def createOtherAccessory(item: OtherAccessoryMstDTO):
+    return OtherAccessoryService.create_other_accessory(item)
