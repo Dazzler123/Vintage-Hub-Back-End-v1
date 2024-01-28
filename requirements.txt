@@ -42,3 +42,4 @@ watchfiles~=0.21.0
 packaging~=23.2
 mysql~=0.0.3
 SQLAlchemy~=2.0.25
+cryptography~=42.0.1
