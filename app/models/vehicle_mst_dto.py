@@ -7,6 +7,7 @@ class VehicleMstDTO(BaseModel):
     make: str
     yom: int
     mileageKmpl: float
+    odometer: float
     fuelType: constr(min_length=1, max_length=1)
     engineCapacityCc: float
     transmission: str | None = None

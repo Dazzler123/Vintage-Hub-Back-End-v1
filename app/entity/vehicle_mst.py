@@ -13,6 +13,7 @@ class VehicleMst(Base):
     make = Column("make", String(length=50))
     yom = Column("yom", Integer)
     mileageKmpl = Column("mileage_kmpl", Float)
+    odometer = Column("odometer_kms", Float)
     fuelType = Column("fuel_type", CHAR)
     engineCapacityCc = Column("engine_capacity_cc", Float)
     transmission = Column("transmission", String(length=50))
