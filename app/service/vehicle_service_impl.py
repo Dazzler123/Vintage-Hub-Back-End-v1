@@ -3,6 +3,7 @@ import pickle
 import pandas as pd
 import numpy as np
 
+from app.models.price_prediction_requisites_dto import PricePredictionRequisitesDTO
 from app.models.vehicle_mst_dto import VehicleMstDTO
 
 file_path = os.path.abspath("cleaned car data.csv")
@@ -30,15 +31,19 @@ class VehicleService:
             return []
 
     # This function is used to suggest user a price using given vehicle specifications.
-    def predict_price(self: VehicleMstDTO):
+    def predict_price(self: PricePredictionRequisitesDTO):
         print(self.make)
 
         file_path = os.path.abspath("LinearRegressionModel.pkl")
         print(file_path)
         model = pickle.load(open(file_path, 'rb'))
 
-        prediction = model.predict(pd.DataFrame(columns=['name', 'company', 'year', 'kms_driven', 'fuel_type'],
-                                                data=np.array(["Maruti Suzuki Swift", "Maruti", 2019, 100, "Petrol"]).
-                                                reshape(1, 5)))
+        prediction = model.predict(
+            pd.DataFrame(
+                columns=['name', 'company', 'year', 'kms_driven', 'fuel_type'],
+                data=np.array(
+                    [(self.make + " " + self.model), self.make, self.yom, self.odometer, self.fuelType]).reshape(1, 5)))
+        # convert into LKR
+        prediction = prediction * 3.76
         print(prediction)
         return str(np.round(prediction[0], 2))

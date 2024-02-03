@@ -1,18 +1,18 @@
 from fastapi import APIRouter
 
+from app.models.price_prediction_requisites_dto import PricePredictionRequisitesDTO
 from app.models.vehicle_mst_dto import VehicleMstDTO
 from app.service.vehicle_service_impl import VehicleService
 
 router = APIRouter()
 
 
-@router.put('/api/vehicle/v1-predict-vehicle-price')
-async def suggestPrice(vehicle: VehicleMstDTO):
+@router.post('/api/vehicle/v1-predict-vehicle-price')
+async def suggestPrice(pricePredictionDto: PricePredictionRequisitesDTO):
     try:
-        print(vehicle, "Vehicle")
-        return VehicleService.predict_price(vehicle)
+        print("Vehicle Details : ", pricePredictionDto)
+        return VehicleService.predict_price(pricePredictionDto)
     except Exception as e:
-        print(f"An error occurred: {e}")
         return f"An error occurred: {e}"
 
 
