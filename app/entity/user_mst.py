@@ -17,9 +17,10 @@ class UserMst(Base):
     gender = Column("gender", CHAR)
     username = Column("username", String(length=255))
     password = Column("enc_password", String(length=255))
+    pw_encrypted_key = Column("password_enc_key", String(length=255))
 
     def __init__(self, name, address, nic, email, contactNo, drivingLicenseNo, gender,
-                 username, password):
+                 username, password, pw_encrypted_key):
         self.name = name
         self.address = address
         self.nic = nic
@@ -29,3 +30,4 @@ class UserMst(Base):
         self.gender = gender
         self.username = username
         self.password = password
+        self.pw_encrypted_key = pw_encrypted_key

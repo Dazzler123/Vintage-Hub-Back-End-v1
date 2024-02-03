@@ -9,8 +9,8 @@ def encrypt_password(password):
     # Create a Fernet object with that key
     f = Fernet(key)
 
-    # Encrypt the string
-    encrypted_string = f.encrypt(password.encode())
+    # Encrypt the string and return the string and key
+    encrypted_string, key = f.encrypt(password.encode())
 
     return encrypted_string
 
