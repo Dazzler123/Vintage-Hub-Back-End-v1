@@ -8,13 +8,13 @@ class VehicleMst(Base):
     __tablename__ = "vehicle_mst"
 
     id = Column("id", Integer, primary_key=True, autoincrement=True)
-    registrationNumber = Column("registration_no", String(length=50))
+    registrationNo = Column("registration_no", String(length=50))
     model = Column("model", String(length=50))
     make = Column("make", String(length=50))
     yom = Column("yom", Integer)
-    mileageKmpl = Column("mileage_kmpl", Float)
+    mileageKmpl = Column("mileage_kmpl", String(length=50))
     odometer = Column("odometer_kms", Float)
-    fuelType = Column("fuel_type", CHAR)
+    fuelType = Column("fuel_type", String(length=10))
     engineCapacityCc = Column("engine_capacity_cc", Float)
     transmission = Column("transmission", String(length=50))
     drivetrain = Column("drivetrain", String(length=50))
@@ -22,14 +22,15 @@ class VehicleMst(Base):
     color = Column("color", String(length=100))
     bodyType = Column("body_type", String(length=50))
 
-
-    def __init__(self, registrationNumber, model, make, yom, mileageKmpl, fuelType, engineCapacityCc, transmission,
+    def __init__(self, registrationNo, model, make, yom, mileageKmpl, odometer, fuelType, engineCapacityCc,
+                 transmission,
                  drivetrain, horsepower, color, bodyType):
-        self.registrationNumber = registrationNumber
+        self.registrationNo = registrationNo
         self.model = model
         self.make = make
         self.yom = yom
         self.mileageKmpl = mileageKmpl
+        self.odometer = odometer
         self.fuelType = fuelType
         self.engineCapacityCc = engineCapacityCc
         self.transmission = transmission

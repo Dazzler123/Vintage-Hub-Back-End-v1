@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, File, UploadFile, HTTPException
 
 from app.models.price_prediction_requisites_dto import PricePredictionRequisitesDTO
 from app.models.vehicle_mst_dto import VehicleMstDTO
@@ -32,3 +32,36 @@ async def getVehicleModels(make: str):
     except Exception as e:
         print(f"An error occurred: {e}")
         return f"An error occurred: {e}"
+
+
+@router.post('/api/vehicle/v1-create-vehicle')
+async def createVehicle(vehicle: VehicleMstDTO):
+    try:
+        return VehicleService.create_vehicle(vehicle)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return f"An error occurred: {e}"
+
+
+@router.post("/api/vehicle/v1-upload-vehicle-image")
+async def upload_images(fileName: str, file: UploadFile = File(...)):
+    try:
+        return VehicleService.upload_image_local(fileName, file)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return f"An error occurred: {e}"
+
+
+@router.get("/api/vehicle/v1-get-vehicle-image")
+async def get_image(filename: str):
+    try:
+        return VehicleService.load_image(filename)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="Image not found")
+
+@router.get("/api/vehicle/v1-get-vehicle-cards")
+async def get_vehicle_card_detail():
+    try:
+        return VehicleService.fetch_vehicle_card_detail(None)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="Image not found")
